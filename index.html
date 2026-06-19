@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Vishnu Bhuvanachandran | Engineer · Researcher · Data Scientist</title>
+  <meta name="description" content="Portfolio of Dr. Vishnu Bhuvanachandran — PhD Mechanical Engineer, Gold Medal Data Analyst, Patent Holder, Principal Investigator. Based in Ireland."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+    /* =========================================================
+       DESIGN SYSTEM
+       Palette: deep navy #0A0F1E (bg), warm white #F7F4EE (text),
+       signal teal #00C9A7 (accent), ember gold #F5A623 (highlight),
+       slate #1E2A3B (card bg), mist #8B9BB4 (secondary text)
+       Signature element: the animated "blueprint grid" hero bg
+       ========================================================= */
+
+    :root {
+      --bg: #0A0F1E;
+      --bg2: #111827;
+      --card: #1A2236;
+      --card2: #222F44;
+      --teal: #00C9A7;
+      --gold: #F5A623;
+      --text: #F7F4EE;
+      --muted: #8B9BB4;
+      --border: #2A3A52;
+      --radius: 12px;
+      --font-display: 'DM Serif Display', Georgia, serif;
+      --font-body: 'Space Grotesk', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --nav-h: 68px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ---- SCROLLBAR ---- */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 4px; }
+
+    /* =========================================================  NAV  */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(10,15,30,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(20px, 5vw, 80px);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--teal); }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--text); border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    /* =========================================================  HERO  */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-h) + 40px) clamp(20px, 8vw, 120px) 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Blueprint grid signature element */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,201,167,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,201,167,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+      animation: gridShift 20s linear infinite;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 60% 40%, rgba(0,201,167,0.07) 0%, transparent 70%),
+                  radial-gradient(ellipse 50% 50% at 20% 80%, rgba(245,166,35,0.05) 0%, transparent 60%);
+    }
+    @keyframes gridShift {
+      from { background-position: 0 0, 0 0; }
+      to   { background-position: 48px 48px, 48px 48px; }
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 60px;
+      align-items: center;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,201,167,0.12);
+      border: 1px solid rgba(0,201,167,0.3);
+      color: var(--teal);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 40px;
+      margin-bottom: 24px;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--teal);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      line-height: 1.12;
+      color: var(--text);
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--teal);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 540px;
+      margin-bottom: 32px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 36px;
+    }
+    .tag {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+    .tag.gold { border-color: rgba(245,166,35,0.4); color: var(--gold); }
+    .tag.teal { border-color: rgba(0,201,167,0.4); color: var(--teal); }
+
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: var(--bg);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.25s;
+      border: 2px solid var(--teal);
+    }
+    .btn-primary:hover { background: transparent; color: var(--teal); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      font-family: var(--font-body);
+      font-weight: 500;
+      font-size: 0.9rem;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: 2px solid var(--border);
+      transition: all 0.25s;
+    }
+    .btn-secondary:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+
+    /* Hero photo frame */
+    .hero-photo-wrap {
+      position: relative;
+    }
+    .hero-photo-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, var(--teal), var(--gold));
+      z-index: 0;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 120px; height: 120px;
+      border: 2px solid rgba(0,201,167,0.25);
+      border-radius: 12px;
+      z-index: -1;
+    }
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      filter: saturate(0.9);
+    }
+    .hero-photo-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 24px;
+      background: var(--gold);
+      color: #1A1200;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 40px;
+      z-index: 3;
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+
+    /* =========================================================  STATS STRIP  */
+    .stats-strip {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 40px clamp(20px, 8vw, 120px);
+    }
+    .stats-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .stat-item h3 {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .stat-item p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* =========================================================  SECTION SHELL  */
+    .section {
+      padding: 100px clamp(20px, 8vw, 120px);
+    }
+    .section-inner { max-width: 1280px; margin: 0 auto; }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      line-height: 1.15;
+      color: var(--text);
+      margin-bottom: 16px;
+    }
+    .section-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 620px;
+      margin-bottom: 56px;
+    }
+
+    /* =========================================================  ABOUT  */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 1rem;
+    }
+    .about-text p strong { color: var(--text); }
+
+    .about-pillars {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .pillar {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+    .pillar:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .pillar-icon {
+      font-size: 1.8rem;
+      margin-bottom: 10px;
+      display: block;
+    }
+    .pillar h4 {
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .pillar p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================================  SKILLS  */
+    #skills { background: var(--bg); }
+
+    .skills-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 36px;
+      flex-wrap: wrap;
+    }
+    .tab-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.06em;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .tab-btn.active, .tab-btn:hover {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: var(--bg);
+    }
+
+    .skills-panel { display: none; }
+    .skills-panel.active { display: block; }
+
+    .skill-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .skill-chip {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.2s;
+    }
+    .skill-chip:hover { border-color: var(--teal); transform: translateX(4px); }
+    .skill-chip .skill-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .skill-chip .skill-label {
+      font-size: 0.88rem;
+      color: var(--text);
+      font-weight: 500;
+    }
+    .skill-chip .skill-sub {
+      font-size: 0.72rem;
+      color: var(--muted);
+      font-family: var(--font-mono);
+    }
+
+    /* =========================================================  PROJECTS  */
+    #projects { background: var(--bg2); }
+
+    .projects-filter {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .filter-btn {
+      background: var(--card);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: default;
+    }
+    .project-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,201,167,0.1);
+    }
+    .project-card.hidden { display: none; }
+
+    .project-visual {
+      height: 180px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Unique SVG-based project visuals baked in */
+    .pv-battery {
+      background: linear-gradient(135deg, #0d2137 0%, #0a3d2b 100%);
+    }
+    .pv-welding {
+      background: linear-gradient(135deg, #1a0a00 0%, #2d1500 100%);
+    }
+    .pv-data {
+      background: linear-gradient(135deg, #0a0f1e 0%, #0d1e33 100%);
+    }
+    .pv-kart {
+      background: linear-gradient(135deg, #130d1e 0%, #0d1e13 100%);
+    }
+    .pv-cattle {
+      background: linear-gradient(135deg, #0a1a0f 0%, #0d2219 100%);
+    }
+    .pv-vacuum {
+      background: linear-gradient(135deg, #0a0d1a 0%, #10162b 100%);
+    }
+    .pv-book {
+      background: linear-gradient(135deg, #1a1000 0%, #1a0d1a 100%);
+    }
+    .pv-cyber {
+      background: linear-gradient(135deg, #001a0d 0%, #0a001a 100%);
+    }
+
+    .project-visual svg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+
+    .project-cat {
+      position: absolute;
+      top: 12px; right: 12px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: var(--muted);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+    .project-cat.engineering { border-color: rgba(0,201,167,0.4); color: var(--teal); }
+    .project-cat.data       { border-color: rgba(245,166,35,0.4); color: var(--gold); }
+    .project-cat.research   { border-color: rgba(138,100,255,0.4); color: #A78BFA; }
+    .project-cat.publishing { border-color: rgba(244,100,100,0.4); color: #F87171; }
+
+    .project-body {
+      padding: 22px 24px 26px;
+    }
+    .project-title {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      color: var(--text);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .project-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .hl-chip {
+      background: rgba(0,201,167,0.08);
+      border: 1px solid rgba(0,201,167,0.2);
+      color: var(--teal);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+    .hl-chip.gold-chip {
+      background: rgba(245,166,35,0.08);
+      border-color: rgba(245,166,35,0.2);
+      color: var(--gold);
+    }
+    .project-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* =========================================================  PUBLICATIONS  */
+    #publications { background: var(--bg); }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pub-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--border);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      padding: 20px 24px;
+      transition: border-color 0.2s;
+    }
+    .pub-item:hover { border-left-color: var(--teal); }
+    .pub-item.gold-pub { border-left-color: var(--gold); }
+    .pub-type {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .pub-title {
+      font-size: 0.95rem;
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.45;
+    }
+    .pub-authors {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
+    .pub-authors strong { color: var(--teal); }
+    .pub-journal {
+      font-size: 0.8rem;
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    /* =========================================================  PATENTS  */
+    #patents { background: var(--bg2); }
+
+    .patents-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .patent-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s;
+    }
+    .patent-card:hover { border-color: var(--gold); transform: translateY(-4px); }
+    .patent-card::before {
+      content: '⚡';
+      position: absolute;
+      top: -10px; right: -10px;
+      font-size: 5rem;
+      opacity: 0.04;
+    }
+    .patent-number {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+      letter-spacing: 0.06em;
+    }
+    .patent-title {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .patent-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .patent-status.granted { color: var(--teal); }
+    .patent-status.published { color: var(--gold); }
+    .patent-status::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    /* =========================================================  EXPERIENCE  */
+    #experience { background: var(--bg); }
+
+    .timeline {
+      position: relative;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 6px; bottom: 6px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 48px;
+    }
+    .tl-dot {
+      position: absolute;
+      left: -34px;
+      top: 6px;
+      width: 12px; height: 12px;
+      background: var(--teal);
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      box-shadow: 0 0 0 4px rgba(0,201,167,0.15);
+    }
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--teal);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .tl-org {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .tl-role {
+      font-size: 0.85rem;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .tl-points {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .tl-points li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding-left: 16px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .tl-points li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.75rem;
+    }
+
+    /* =========================================================  AWARDS  */
+    #awards { background: var(--bg2); }
+
+    .awards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .award-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      transition: all 0.25s;
+    }
+    .award-card:hover { border-color: var(--gold); transform: translateY(-3px); }
+    .award-icon {
+      font-size: 2rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+    .award-body h4 {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+    .award-body p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* =========================================================  CONTACT  */
+    #contact { background: var(--bg); }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+    }
+    .contact-info p {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      padding: 14px 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--teal); transform: translateX(4px); }
+    .contact-link .cl-icon {
+      width: 36px; height: 36px;
+      background: rgba(0,201,167,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-link .cl-text strong {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+    }
+
+    .cv-download-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .cv-download-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      transition: all 0.2s;
+    }
+    .cv-download-card:hover { border-color: var(--gold); }
+    .cv-left strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+    .cv-left span {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+    }
+    .cv-dl-btn {
+      background: var(--gold);
+      color: #1A1200;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .cv-dl-btn:hover { background: #ffc043; }
+
+    /* =========================================================  FOOTER  */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 40px clamp(20px, 8vw, 120px);
+      text-align: center;
+    }
+    footer p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+    footer a { color: var(--teal); text-decoration: none; }
+
+    /* =========================================================  SCROLL REVEAL  */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================  MOBILE  */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-photo-wrap {
+        max-width: 280px;
+        margin: 0 auto;
+        order: -1;
+      }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-pillars { grid-template-columns: 1fr 1fr; }
+      .nav-links { display: none; gap: 0; flex-direction: column; position: absolute; top: var(--nav-h); left: 0; right: 0; background: var(--bg2); padding: 20px 24px; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      nav { position: fixed; }
+    }
+    @media (max-width: 560px) {
+      .about-pillars { grid-template-columns: 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .patents-grid { grid-template-columns: 1fr; }
+      .awards-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ====================================================== NAV -->
+<nav id="navbar">
+  <div class="logo">Dr. Vishnu <span>B.R.</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#patents">Patents</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ====================================================== HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Available for opportunities · Ireland</div>
+      <h1>Engineer. Researcher.<br/><em>Data Scientist.</em></h1>
+      <p class="hero-sub">PhD Mechanical Engineer and Gold Medal MSc Data Analyst bridging experimental research, sustainable engineering, and intelligent data systems — across automotive, industrial, and academic domains.</p>
+      <div class="tag-row">
+        <span class="tag gold">🏅 President's Gold Medal</span>
+        <span class="tag teal">🔬 4 Granted Patents</span>
+        <span class="tag">📄 20+ Publications</span>
+        <span class="tag">🌍 IIW Speaker</span>
+        <span class="tag teal">📊 Power BI · Python · SQL</span>
+        <span class="tag">⚙️ SolidWorks · CAD · DoE</span>
+      </div>
+      <div class="hero-ctas">
+        <a href="#projects" class="btn-primary">↓ Explore Projects</a>
+        <a href="#contact" class="btn-secondary">Get in Touch →</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <img src="profile.jpg" alt="Dr Vishnu Bhuvanachandran" class="hero-photo"/>
+      <div class="hero-photo-badge">PhD · MSc · DAE Fellow</div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== STATS -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item reveal"><h3 id="c1">10+</h3><p>Years Experience</p></div>
+    <div class="stat-item reveal"><h3 id="c2">20+</h3><p>Publications</p></div>
+    <div class="stat-item reveal"><h3>5</h3><p>Patents</p></div>
+    <div class="stat-item reveal"><h3>€56k+</h3><p>Research Funded</p></div>
+    <div class="stat-item reveal"><h3>70%</h3><p>Cr(VI) Reduction</p></div>
+    <div class="stat-item reveal"><h3>30+</h3><p>Team Members Led</p></div>
+  </div>
+</div>
+
+<!-- ====================================================== ABOUT -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-eyebrow">About Me</div>
+    <h2 class="section-title">Where precision engineering<br/>meets data intelligence</h2>
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>I am a <strong>PhD Mechanical Engineer</strong> and <strong>Gold Medal MSc Data Analyst</strong> with over a decade of hands-on experience spanning government-funded research, experimental testing, CAD design, and advanced analytics.</p>
+        <p>My career began at <strong>IGCAR, India's Dept. of Atomic Energy</strong>, where I led rigorous experimental programmes on welding emission control — achieving a 70% reduction in carcinogenic Cr(VI) through nano-composite flux innovation, validated to NIOSH and AWS international standards.</p>
+        <p>As <strong>Principal Investigator</strong> at Marian Engineering College, I built research labs from scratch, led 30+ person teams, secured government funding, and mentored students into engineers. My EV battery thermoelectric cooling system earned a Best Paper Award and granted patent.</p>
+        <p>I recently completed an <strong>MSc in Data Analytics at DkIT, Ireland</strong> — graduating First Class with the President's Gold Medal — and now combine my engineering depth with modern data science tools to deliver both technical and analytical impact.</p>
+        <p>I am <strong>immediately available in Ireland</strong> and open to roles in data analytics, mechanical engineering, automotive testing, R&D, and research positions.</p>
+      </div>
+      <div class="about-pillars">
+        <div class="pillar">
+          <span class="pillar-icon">⚗️</span>
+          <h4>Experimental Research</h4>
+          <p>DoE, emission characterisation, NIOSH/AWS protocols, industrial validation</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">📐</span>
+          <h4>Mechanical Design</h4>
+          <p>SolidWorks, GD&T, BOM, DFM/DFA, prototyping, CAD lifecycle</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">📊</span>
+          <h4>Data Analytics</h4>
+          <p>Python, SQL, Power BI, ML, statistical modelling, dashboards</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🔋</span>
+          <h4>EV & Thermal Systems</h4>
+          <p>Battery cooling, thermoelectric systems, thermal simulation, patents</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🛡️</span>
+          <h4>Safety & Compliance</h4>
+          <p>Occupational health, ISO 13485, NIOSH, AWS, DAE standards</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🚀</span>
+          <h4>Research Leadership</h4>
+          <p>PI on €56k+ funded projects, IIW international speaker, book co-editor</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== SKILLS -->
+<section class="section" id="skills">
+  <div class="section-inner">
+    <div class="section-eyebrow">Technical Skills</div>
+    <h2 class="section-title">A dual toolkit — engineering depth,<br/>data intelligence</h2>
+    <p class="section-lead">Skills built over a decade of industry, government research, academic R&D, and postgraduate study in Ireland.</p>
+
+    <div class="skills-tabs">
+      <button class="tab-btn active" onclick="switchTab('eng', this)">⚙️ Engineering & Design</button>
+      <button class="tab-btn" onclick="switchTab('data', this)">📊 Data & Analytics</button>
+      <button class="tab-btn" onclick="switchTab('research', this)">🔬 Research Methods</button>
+      <button class="tab-btn" onclick="switchTab('soft', this)">🤝 Professional</button>
+    </div>
+
+    <div class="skills-panel active reveal" id="panel-eng">
+      <div class="skill-group">
+        <div class="skill-chip"><span class="skill-icon">📐</span><div><div class="skill-label">SolidWorks</div><div class="skill-sub">3D Modelling · Assemblies · GD&T</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📏</span><div><div class="skill-label">CAD / Creo / AutoCAD</div><div class="skill-sub">Detailed Drawings · BOM · ECR/ECO</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🔩</span><div><div class="skill-label">DFM / DFA Review</div><div class="skill-sub">Stack-up Analysis · Assembly Optimisation</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🖨️</span><div><div class="skill-label">Rapid Prototyping</div><div class="skill-sub">3D Printing · CNC · Laser Cutting</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🌡️</span><div><div class="skill-label">Thermal Systems</div><div class="skill-sub">EV Cooling · Thermoelectric · Simulation</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">💨</span><div><div class="skill-label">FEA / ANSYS</div><div class="skill-sub">Structural · Thermal Analysis</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📋</span><div><div class="skill-label">DHF Documentation</div><div class="skill-sub">ISO 13485 · PLM · Risk Assessment</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🛡️</span><div><div class="skill-label">Emission Standards</div><div class="skill-sub">ISO 15011-1:2009 · AWS F1.2 · NIOSH</div></div></div>
+      </div>
+    </div>
+
+    <div class="skills-panel" id="panel-data">
+      <div class="skill-group">
+        <div class="skill-chip"><span class="skill-icon">🐍</span><div><div class="skill-label">Python</div><div class="skill-sub">Pandas · Scikit-learn · Matplotlib · ML</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🗃️</span><div><div class="skill-label">SQL / PostgreSQL</div><div class="skill-sub">Queries · Data Validation · ETL</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📊</span><div><div class="skill-label">Power BI</div><div class="skill-sub">Dashboards · DAX · Multi-source Integration</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🕸️</span><div><div class="skill-label">Neo4j Graph DB</div><div class="skill-sub">Route Optimisation · Data Integrity</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📈</span><div><div class="skill-label">Statistical Analysis</div><div class="skill-sub">Minitab · Design Expert · R</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🤖</span><div><div class="skill-label">Machine Learning</div><div class="skill-sub">Classification · Imbalanced Data · Feature Eng.</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🔐</span><div><div class="skill-label">GDPR Principles</div><div class="skill-sub">Data Governance · Ethical Consent Docs</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">⚡</span><div><div class="skill-label">Excel Advanced</div><div class="skill-sub">Pivot Tables · Variance Analysis · Macros</div></div></div>
+      </div>
+    </div>
+
+    <div class="skills-panel" id="panel-research">
+      <div class="skill-group">
+        <div class="skill-chip"><span class="skill-icon">🧪</span><div><div class="skill-label">Design of Experiments (DoE)</div><div class="skill-sub">Factorial · RSM · Taguchi Methods</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🌬️</span><div><div class="skill-label">Emission Characterisation</div><div class="skill-sub">Cascade Impactors · Personal Air Samplers</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🔍</span><div><div class="skill-label">Elemental Analysis</div><div class="skill-sub">Cr(VI) · NIOSH 7600/7300 · ICP-MS</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📑</span><div><div class="skill-label">Research Publishing</div><div class="skill-sub">SCI/Scopus · Peer Review · Book Chapters</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">💡</span><div><div class="skill-label">IP & Patent Authoring</div><div class="skill-sub">4 Granted Indian Patents · IP Documentation</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📝</span><div><div class="skill-label">Grant Proposal Writing</div><div class="skill-sub">INR 40 Lakhs+ secured · ANERT · KDISC</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🔬</span><div><div class="skill-label">Materials Characterisation</div><div class="skill-sub">Nano-composites · Flux Formulation · SEM</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🎓</span><div><div class="skill-label">Academic Supervision</div><div class="skill-sub">UG & PG Dissertations · Team of 30+</div></div></div>
+      </div>
+    </div>
+
+    <div class="skills-panel" id="panel-soft">
+      <div class="skill-group">
+        <div class="skill-chip"><span class="skill-icon">🗣️</span><div><div class="skill-label">International Presentation</div><div class="skill-sub">IIW Assemblies · 50+ Countries</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🗺️</span><div><div class="skill-label">Project Management</div><div class="skill-sub">Multi-phase Delivery · Milestone Tracking</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🤝</span><div><div class="skill-label">Stakeholder Liaison</div><div class="skill-sub">Govt. Bodies · Industry · Academia</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🏎️</span><div><div class="skill-label">Full Irish Driving Licence</div><div class="skill-sub">Available for site-based & mobile roles</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">📖</span><div><div class="skill-label">Book Editing</div><div class="skill-sub">Taylor & Francis · AI for Sustainable Futures</div></div></div>
+        <div class="skill-chip"><span class="skill-icon">🌱</span><div><div class="skill-label">Sustainability Focus</div><div class="skill-sub">Green Consumables · Emission Reduction · SDGs</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== PROJECTS -->
+<section class="section" id="projects">
+  <div class="section-inner">
+    <div class="section-eyebrow">Selected Projects</div>
+    <h2 class="section-title">Research, engineering &amp; data projects<br/>with real-world impact</h2>
+    <p class="section-lead">From government-funded R&D to MSc dissertations — each project grounded in rigorous methodology and documented outcomes.</p>
+
+    <div class="projects-filter">
+      <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+      <button class="filter-btn" onclick="filterProjects('engineering', this)">Engineering</button>
+      <button class="filter-btn" onclick="filterProjects('data', this)">Data Science</button>
+      <button class="filter-btn" onclick="filterProjects('research', this)">Research</button>
+      <button class="filter-btn" onclick="filterProjects('publishing', this)">Publishing</button>
+    </div>
+
+    <div class="projects-grid reveal" id="projectsGrid">
+
+      <!-- PROJECT 1: EV Battery Cooling -->
+      <div class="project-card" data-cat="engineering">
+        <div class="project-visual pv-battery">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="batGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#00C9A7;stop-opacity:0.3"/>
+                <stop offset="100%" style="stop-color:#F5A623;stop-opacity:0.2"/>
+              </linearGradient>
+            </defs>
+            <!-- Battery cells -->
+            <rect x="20" y="40" width="50" height="100" rx="6" fill="none" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+            <rect x="22" y="42" width="46" height="70" rx="4" fill="#00C9A7" opacity="0.15"/>
+            <rect x="80" y="40" width="50" height="100" rx="6" fill="none" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+            <rect x="82" y="42" width="46" height="80" rx="4" fill="#00C9A7" opacity="0.15"/>
+            <rect x="140" y="40" width="50" height="100" rx="6" fill="none" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+            <rect x="142" y="42" width="46" height="60" rx="4" fill="#00C9A7" opacity="0.15"/>
+            <!-- Cooling pipes -->
+            <path d="M20 95 Q45 75 80 95 Q105 115 140 95 Q165 75 200 95" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.7"/>
+            <path d="M20 105 Q45 125 80 105 Q105 85 140 105 Q165 125 200 105" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.5"/>
+            <!-- Thermoelectric module -->
+            <rect x="230" y="50" width="80" height="80" rx="8" fill="url(#batGrad)" stroke="#00C9A7" stroke-width="1"/>
+            <text x="270" y="88" font-family="JetBrains Mono, monospace" font-size="10" fill="#00C9A7" text-anchor="middle">TEC</text>
+            <text x="270" y="102" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">COOLING</text>
+            <!-- Heat arrows -->
+            <path d="M310 70 L340 70 L335 65 M340 70 L335 75" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.8"/>
+            <path d="M310 90 L340 90 L335 85 M340 90 L335 95" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.8"/>
+            <!-- Temperature labels -->
+            <text x="350" y="75" font-family="JetBrains Mono, monospace" font-size="9" fill="#F5A623" opacity="0.9">HOT</text>
+            <text x="350" y="95" font-family="JetBrains Mono, monospace" font-size="9" fill="#00C9A7" opacity="0.9">COOL</text>
+            <!-- Patent badge -->
+            <rect x="20" y="155" width="120" height="16" rx="4" fill="#F5A623" opacity="0.15"/>
+            <text x="80" y="167" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">PATENT GRANTED</text>
+          </svg>
+          <span class="project-cat engineering">Engineering</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Thermoelectric EV Battery Cooling System</div>
+          <p class="project-desc">Dual-stage thermoelectric cooling system for swappable EV battery packs — from concept design to CAD modelling, material selection, prototype fabrication, and performance testing. Government-funded (ANERT, Kerala).</p>
+          <div class="project-highlights">
+            <span class="hl-chip">SolidWorks CAD</span>
+            <span class="hl-chip">Thermoelectric DoE</span>
+            <span class="hl-chip">Prototype & Test</span>
+            <span class="hl-chip gold-chip">🏆 Best Paper ICNN 2023</span>
+            <span class="hl-chip gold-chip">⚡ Patent Granted</span>
+          </div>
+          <div class="project-meta">
+            <span>ANERT, Govt. of Kerala · INR 12 Lakhs</span>
+            <span>2019–2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 2: Welding Emission Control -->
+      <div class="project-card" data-cat="research">
+        <div class="project-visual pv-welding">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Welding arc glow -->
+            <radialGradient id="arcGlow" cx="40%" cy="60%" r="30%">
+              <stop offset="0%" style="stop-color:#FF8C00;stop-opacity:0.8"/>
+              <stop offset="100%" style="stop-color:#FF8C00;stop-opacity:0"/>
+            </radialGradient>
+            <ellipse cx="160" cy="110" rx="60" ry="40" fill="url(#arcGlow)"/>
+            <!-- Electrode -->
+            <rect x="140" y="20" width="8" height="80" rx="4" fill="#888" stroke="#aaa" stroke-width="0.5"/>
+            <ellipse cx="144" cy="100" rx="8" ry="12" fill="#FF8C00" opacity="0.9"/>
+            <!-- Fume particles - before -->
+            <circle cx="100" cy="50" r="4" fill="#FF6B6B" opacity="0.6"/>
+            <circle cx="120" cy="30" r="3" fill="#FF6B6B" opacity="0.5"/>
+            <circle cx="80" cy="70" r="5" fill="#FF6B6B" opacity="0.4"/>
+            <circle cx="60" cy="40" r="3" fill="#FF6B6B" opacity="0.5"/>
+            <text x="80" y="25" font-family="JetBrains Mono, monospace" font-size="9" fill="#FF6B6B" opacity="0.8" text-anchor="middle">Cr(VI) FUMES</text>
+            <!-- Arrow -->
+            <path d="M220 90 L270 90" fill="none" stroke="#00C9A7" stroke-width="2"/>
+            <polygon points="270,85 280,90 270,95" fill="#00C9A7"/>
+            <text x="250" y="80" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">70% REDUCTION</text>
+            <!-- After nano-composite -->
+            <circle cx="310" cy="60" r="2" fill="#00C9A7" opacity="0.4"/>
+            <circle cx="330" cy="45" r="1.5" fill="#00C9A7" opacity="0.3"/>
+            <circle cx="350" cy="70" r="2" fill="#00C9A7" opacity="0.35"/>
+            <text x="330" y="30" font-family="JetBrains Mono, monospace" font-size="9" fill="#00C9A7" text-anchor="middle">LOW EMISSION</text>
+            <!-- Workpiece -->
+            <rect x="60" y="125" width="280" height="30" rx="4" fill="#2a2a2a" stroke="#555" stroke-width="1"/>
+            <!-- NIOSH badge -->
+            <rect x="250" y="145" width="100" height="16" rx="4" fill="rgba(0,201,167,0.15)"/>
+            <text x="300" y="157" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">NIOSH VALIDATED</text>
+          </svg>
+          <span class="project-cat research">Research</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Welding Fume &amp; Cr(VI) Reduction — DAE-IGCAR</div>
+          <p class="project-desc">Developed nano-composite flux formulations for stainless steel SMAW electrodes achieving a 70% reduction in carcinogenic Cr(VI) emissions. Validated using cascade impactors, NIOSH 7600/7300 methods, and AWS F1.2 fume chambers. Two granted patents.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">DoE / Nano-composites</span>
+            <span class="hl-chip">Cascade Impactors</span>
+            <span class="hl-chip">NIOSH 7600/7300</span>
+            <span class="hl-chip gold-chip">⚡ 2 Patents Granted</span>
+            <span class="hl-chip gold-chip">📄 7+ Publications</span>
+          </div>
+          <div class="project-meta">
+            <span>DAE-IGCAR, Govt. of India</span>
+            <span>2014–2019</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 3: Cattle Disease ML -->
+      <div class="project-card" data-cat="data">
+        <div class="project-visual pv-cattle">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Data flow lines -->
+            <line x1="20" y1="90" x2="80" y2="90" stroke="#00C9A7" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+            <line x1="80" y1="90" x2="170" y2="60" stroke="#00C9A7" stroke-width="1" opacity="0.4"/>
+            <line x1="80" y1="90" x2="170" y2="90" stroke="#00C9A7" stroke-width="1" opacity="0.4"/>
+            <line x1="80" y1="90" x2="170" y2="120" stroke="#00C9A7" stroke-width="1" opacity="0.4"/>
+            <!-- Input node -->
+            <rect x="10" y="75" width="70" height="30" rx="6" fill="rgba(0,201,167,0.1)" stroke="#00C9A7" stroke-width="1"/>
+            <text x="45" y="88" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">2.3M ROWS</text>
+            <text x="45" y="99" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">Sensor Data</text>
+            <!-- Hidden layer nodes -->
+            <circle cx="195" cy="60" r="14" fill="rgba(0,201,167,0.12)" stroke="#00C9A7" stroke-width="1"/>
+            <circle cx="195" cy="90" r="14" fill="rgba(0,201,167,0.12)" stroke="#00C9A7" stroke-width="1"/>
+            <circle cx="195" cy="120" r="14" fill="rgba(0,201,167,0.12)" stroke="#00C9A7" stroke-width="1"/>
+            <!-- Hidden to output -->
+            <line x1="209" y1="60" x2="270" y2="78" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <line x1="209" y1="90" x2="270" y2="90" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <line x1="209" y1="120" x2="270" y2="102" stroke="#F5A623" stroke-width="1" opacity="0.5"/>
+            <!-- Output -->
+            <rect x="270" y="68" width="80" height="44" rx="6" fill="rgba(245,166,35,0.1)" stroke="#F5A623" stroke-width="1"/>
+            <text x="310" y="87" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">DISEASE</text>
+            <text x="310" y="99" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">ALERT</text>
+            <!-- Accuracy badge -->
+            <rect x="80" y="145" width="240" height="20" rx="6" fill="rgba(0,201,167,0.08)"/>
+            <text x="200" y="159" font-family="JetBrains Mono, monospace" font-size="9" fill="#00C9A7" text-anchor="middle">ML PIPELINE · SMOTE · CALIBRATED PROBABILITIES</text>
+            <!-- Dataset label -->
+            <text x="195" y="20" font-family="JetBrains Mono, monospace" font-size="10" fill="#8B9BB4" text-anchor="middle">Cattle Health Prediction System</text>
+          </svg>
+          <span class="project-cat data">Data Science</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Cattle Disease Prediction — ML Pipeline</div>
+          <p class="project-desc">Built a machine learning pipeline for early dairy cattle disease prediction from a 2.3M-row sensor dataset. Applied feature engineering, SMOTE for class-imbalance, calibrated probability thresholds, and ethical consent documentation aligned with GDPR principles. Published as Elsevier book chapter.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">Python · Scikit-learn</span>
+            <span class="hl-chip">2.3M Rows</span>
+            <span class="hl-chip">SMOTE / Imbalanced Data</span>
+            <span class="hl-chip gold-chip">📖 Elsevier Book Chapter</span>
+          </div>
+          <div class="project-meta">
+            <span>DkIT MSc Research · 2024–2025</span>
+            <span>Under Review</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 4: Power BI Cyber Dashboard -->
+      <div class="project-card" data-cat="data">
+        <div class="project-visual pv-cyber">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Dashboard frame -->
+            <rect x="15" y="20" width="370" height="140" rx="8" fill="rgba(10,15,30,0.7)" stroke="#2A3A52" stroke-width="1"/>
+            <!-- Bar chart -->
+            <rect x="30" y="80" width="18" height="65" rx="2" fill="#00C9A7" opacity="0.7"/>
+            <rect x="54" y="55" width="18" height="90" rx="2" fill="#00C9A7" opacity="0.8"/>
+            <rect x="78" y="70" width="18" height="75" rx="2" fill="#00C9A7" opacity="0.6"/>
+            <rect x="102" y="40" width="18" height="105" rx="2" fill="#F5A623" opacity="0.8"/>
+            <rect x="126" y="65" width="18" height="80" rx="2" fill="#00C9A7" opacity="0.7"/>
+            <!-- Line chart overlay -->
+            <polyline points="30,90 54,65 78,80 102,50 126,75 150,60 174,45" fill="none" stroke="#F5A623" stroke-width="2" opacity="0.8"/>
+            <!-- Sunburst hint circles -->
+            <circle cx="280" cy="90" r="55" fill="none" stroke="#2A3A52" stroke-width="1"/>
+            <circle cx="280" cy="90" r="38" fill="none" stroke="#2A3A52" stroke-width="1"/>
+            <circle cx="280" cy="90" r="20" fill="rgba(0,201,167,0.15)" stroke="#00C9A7" stroke-width="1"/>
+            <!-- Sunburst segments -->
+            <path d="M280 90 L335 55 A55 55 0 0 0 280 35 Z" fill="#00C9A7" opacity="0.25"/>
+            <path d="M280 90 L280 35 A55 55 0 0 0 230 65 Z" fill="#F5A623" opacity="0.2"/>
+            <path d="M280 90 L230 65 A55 55 0 0 0 260 142 Z" fill="#A78BFA" opacity="0.2"/>
+            <path d="M280 90 L260 142 A55 55 0 0 0 335 125 Z" fill="#F87171" opacity="0.2"/>
+            <path d="M280 90 L335 125 A55 55 0 0 0 335 55 Z" fill="#34D399" opacity="0.2"/>
+            <text x="280" y="95" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">CYBER</text>
+            <!-- Labels -->
+            <text x="90" y="155" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">Threat Trends</text>
+            <text x="280" y="158" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">Attack Distribution</text>
+          </svg>
+          <span class="project-cat data">Data Science</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Cyber Threat Reporting Dashboard</div>
+          <p class="project-desc">Created interactive Power BI and R Shiny dashboards visualising cyber threat data with sunburst diagrams, trend analysis, and multi-dimensional filtering. Built using Python, JavaScript, and HTML with a focus on multi-source data integration and storytelling through visualisation.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">Power BI</span>
+            <span class="hl-chip">R Shiny</span>
+            <span class="hl-chip">Python · JavaScript</span>
+            <span class="hl-chip">Sunburst Diagrams</span>
+          </div>
+          <div class="project-meta">
+            <span>DkIT MSc Data Analytics · 2024–2025</span>
+            <span>Completed</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 5: Electric Go-Kart -->
+      <div class="project-card" data-cat="engineering">
+        <div class="project-visual pv-kart">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Kart silhouette -->
+            <ellipse cx="120" cy="140" rx="28" ry="14" fill="#2a2a3a" stroke="#00C9A7" stroke-width="1.5"/>
+            <ellipse cx="280" cy="140" rx="28" ry="14" fill="#2a2a3a" stroke="#00C9A7" stroke-width="1.5"/>
+            <rect x="60" y="80" width="280" height="50" rx="12" fill="rgba(26,34,54,0.9)" stroke="#2A3A52" stroke-width="1"/>
+            <rect x="100" y="55" width="200" height="40" rx="8" fill="rgba(0,201,167,0.08)" stroke="#00C9A7" stroke-width="1"/>
+            <!-- Driver seat outline -->
+            <rect x="160" y="45" width="80" height="50" rx="6" fill="none" stroke="#F5A623" stroke-width="1" stroke-dasharray="3,3"/>
+            <!-- Electrical connections -->
+            <line x1="90" y1="105" x2="130" y2="105" stroke="#F5A623" stroke-width="1.5" opacity="0.8"/>
+            <line x1="270" y1="105" x2="310" y2="105" stroke="#F5A623" stroke-width="1.5" opacity="0.8"/>
+            <text x="200" y="73" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">ELECTRIC MOTOR</text>
+            <!-- Award banner -->
+            <rect x="100" y="20" width="200" height="20" rx="6" fill="rgba(245,166,35,0.12)" stroke="#F5A623" stroke-width="0.5"/>
+            <text x="200" y="34" font-family="JetBrains Mono, monospace" font-size="9" fill="#F5A623" text-anchor="middle">🏆 NATIONAL RECOGNITION</text>
+            <!-- Team count -->
+            <text x="200" y="165" font-family="JetBrains Mono, monospace" font-size="8" fill="#8B9BB4" text-anchor="middle">30+ MEMBER INTERDISCIPLINARY TEAM</text>
+          </svg>
+          <span class="project-cat engineering">Engineering</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Electric Go-Kart — National Award Project</div>
+          <p class="project-desc">Coordinated a 30+ member interdisciplinary team to design, build, and test a competitive electric go-kart. Managed daily scheduling, quality inspections, procurement, and programme milestone delivery — achieving national-level recognition at competition.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">Team Leadership</span>
+            <span class="hl-chip">EV Systems</span>
+            <span class="hl-chip">Project Delivery</span>
+            <span class="hl-chip gold-chip">🏆 National Award</span>
+          </div>
+          <div class="project-meta">
+            <span>Marian Engineering College · Kerala</span>
+            <span>2019–2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 6: AI for Sustainable Futures Book -->
+      <div class="project-card" data-cat="publishing">
+        <div class="project-visual pv-book">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Book spine & cover -->
+            <rect x="80" y="20" width="20" height="140" rx="4" fill="#2a1a00" stroke="#F5A623" stroke-width="1"/>
+            <rect x="100" y="20" width="140" height="140" rx="0 8 8 0" fill="rgba(30,20,5,0.9)" stroke="#F5A623" stroke-width="1"/>
+            <!-- Book content illustration -->
+            <rect x="110" y="35" width="120" height="8" rx="2" fill="#F5A623" opacity="0.6"/>
+            <rect x="110" y="50" width="90" height="5" rx="2" fill="#8B9BB4" opacity="0.5"/>
+            <rect x="110" y="60" width="100" height="5" rx="2" fill="#8B9BB4" opacity="0.4"/>
+            <!-- AI brain icon schematic -->
+            <circle cx="160" cy="110" r="28" fill="none" stroke="#F5A623" stroke-width="1" opacity="0.4"/>
+            <circle cx="160" cy="110" r="18" fill="none" stroke="#00C9A7" stroke-width="1" opacity="0.5"/>
+            <circle cx="160" cy="110" r="5" fill="#F5A623" opacity="0.6"/>
+            <line x1="160" y1="82" x2="160" y2="90" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <line x1="160" y1="130" x2="160" y2="138" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <line x1="132" y1="110" x2="140" y2="110" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <line x1="180" y1="110" x2="188" y2="110" stroke="#F5A623" stroke-width="1" opacity="0.6"/>
+            <!-- Publisher badge -->
+            <rect x="260" y="40" width="110" height="40" rx="8" fill="rgba(245,166,35,0.1)" stroke="#F5A623" stroke-width="0.5"/>
+            <text x="315" y="57" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">TAYLOR &amp;</text>
+            <text x="315" y="70" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">FRANCIS</text>
+            <!-- Authors -->
+            <rect x="260" y="100" width="110" height="50" rx="6" fill="rgba(0,201,167,0.05)" stroke="#2A3A52" stroke-width="0.5"/>
+            <text x="315" y="116" font-family="JetBrains Mono, monospace" font-size="7" fill="#00C9A7" text-anchor="middle">Lead Editor</text>
+            <text x="315" y="128" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">Vishnu BR</text>
+            <text x="315" y="140" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">Kaushik · Sharma</text>
+          </svg>
+          <span class="project-cat publishing">Publishing</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">AI for Sustainable Futures — Taylor &amp; Francis Book</div>
+          <p class="project-desc">Co-editing a Taylor &amp; Francis book as lead editor: "Artificial Intelligence for Sustainable Futures: Innovations in Data Science, Analytics, and Machine Learning towards Global Impact." International academic leadership involving Dr. Abhishek Kaushik (DkIT) and Dr. Shubham Sharma.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">Lead Editor</span>
+            <span class="hl-chip">AI &amp; Sustainability</span>
+            <span class="hl-chip">International Research</span>
+            <span class="hl-chip gold-chip">📚 Taylor &amp; Francis</span>
+          </div>
+          <div class="project-meta">
+            <span>In Progress · 2024–2025</span>
+            <span>Publishing</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 7: Industrial Vacuum System -->
+      <div class="project-card" data-cat="engineering">
+        <div class="project-visual pv-vacuum">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- Main vacuum unit -->
+            <rect x="50" y="40" width="100" height="100" rx="8" fill="rgba(26,34,54,0.9)" stroke="#2A3A52" stroke-width="1.5"/>
+            <!-- Motor symbol -->
+            <circle cx="100" cy="90" r="32" fill="none" stroke="#00C9A7" stroke-width="1.5"/>
+            <circle cx="100" cy="90" r="18" fill="none" stroke="#00C9A7" stroke-width="1" opacity="0.5"/>
+            <text x="100" y="94" font-family="JetBrains Mono, monospace" font-size="10" fill="#00C9A7" text-anchor="middle">M</text>
+            <!-- Suction pipes -->
+            <rect x="150" y="70" width="80" height="12" rx="4" fill="#2A3A52" stroke="#8B9BB4" stroke-width="1"/>
+            <rect x="150" y="98" width="80" height="12" rx="4" fill="#2A3A52" stroke="#8B9BB4" stroke-width="1"/>
+            <rect x="230" y="50" width="12" height="80" rx="4" fill="#2A3A52" stroke="#8B9BB4" stroke-width="1"/>
+            <!-- Collection point -->
+            <rect x="270" y="55" width="80" height="70" rx="8" fill="rgba(0,201,167,0.06)" stroke="#00C9A7" stroke-width="1"/>
+            <text x="310" y="88" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">CENTRAL</text>
+            <text x="310" y="100" font-family="JetBrains Mono, monospace" font-size="8" fill="#00C9A7" text-anchor="middle">COLLECTION</text>
+            <!-- GE label -->
+            <rect x="50" y="152" width="100" height="16" rx="4" fill="rgba(245,166,35,0.1)"/>
+            <text x="100" y="164" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">GE ONSHORE · INR 2L</text>
+            <!-- Flow arrows -->
+            <text x="190" y="69" font-family="sans-serif" font-size="12" fill="#F5A623" opacity="0.8">→</text>
+            <text x="190" y="97" font-family="sans-serif" font-size="12" fill="#F5A623" opacity="0.8">→</text>
+          </svg>
+          <span class="project-cat engineering">Engineering</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">Centralised Industrial Vacuum System — GE</div>
+          <p class="project-desc">Industry consultancy for GE Onshore Electricals: designed a centralised vacuum system from concept, produced complete SolidWorks drawings, BOM, specification packages, and coordinated suppliers through to delivery and commissioning.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">SolidWorks Design</span>
+            <span class="hl-chip">BOM &amp; Drawings</span>
+            <span class="hl-chip">Supplier Coordination</span>
+            <span class="hl-chip">Industry Consultancy</span>
+          </div>
+          <div class="project-meta">
+            <span>GE Onshore Electricals · India</span>
+            <span>2019–2024</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT 8: AI Opinion Paper - 21 Authors -->
+      <div class="project-card" data-cat="research">
+        <div class="project-visual pv-data">
+          <svg viewBox="0 0 400 180" xmlns="http://www.w3.org/2000/svg">
+            <!-- SDG-style circles -->
+            <circle cx="80" cy="90" r="35" fill="none" stroke="#00C9A7" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="150" cy="60" r="28" fill="none" stroke="#F5A623" stroke-width="1.5" opacity="0.4"/>
+            <circle cx="150" cy="120" r="28" fill="none" stroke="#A78BFA" stroke-width="1.5" opacity="0.4"/>
+            <!-- Connecting network -->
+            <line x1="115" y1="90" x2="180" y2="90" stroke="#00C9A7" stroke-width="1" opacity="0.5"/>
+            <line x1="80" y1="55" x2="130" y2="60" stroke="#00C9A7" stroke-width="1" opacity="0.3"/>
+            <line x1="80" y1="125" x2="130" y2="120" stroke="#00C9A7" stroke-width="1" opacity="0.3"/>
+            <!-- Central AI hub -->
+            <rect x="180" y="65" width="80" height="50" rx="8" fill="rgba(0,201,167,0.1)" stroke="#00C9A7" stroke-width="1"/>
+            <text x="220" y="88" font-family="JetBrains Mono, monospace" font-size="9" fill="#00C9A7" text-anchor="middle">AI + SDGs</text>
+            <text x="220" y="102" font-family="JetBrains Mono, monospace" font-size="7" fill="#8B9BB4" text-anchor="middle">21 Co-authors</text>
+            <!-- Author dots -->
+            <circle cx="300" cy="50" r="4" fill="#F5A623" opacity="0.7"/>
+            <circle cx="320" cy="70" r="4" fill="#00C9A7" opacity="0.7"/>
+            <circle cx="340" cy="55" r="4" fill="#A78BFA" opacity="0.7"/>
+            <circle cx="300" cy="95" r="4" fill="#F87171" opacity="0.7"/>
+            <circle cx="330" cy="100" r="4" fill="#00C9A7" opacity="0.7"/>
+            <circle cx="350" cy="80" r="4" fill="#F5A623" opacity="0.7"/>
+            <circle cx="310" cy="125" r="4" fill="#34D399" opacity="0.7"/>
+            <circle cx="340" cy="135" r="4" fill="#A78BFA" opacity="0.7"/>
+            <line x1="260" y1="90" x2="296" y2="55" stroke="#2A3A52" stroke-width="0.5"/>
+            <line x1="260" y1="90" x2="316" y2="72" stroke="#2A3A52" stroke-width="0.5"/>
+            <line x1="260" y1="90" x2="336" y2="57" stroke="#2A3A52" stroke-width="0.5"/>
+            <line x1="260" y1="90" x2="296" y2="97" stroke="#2A3A52" stroke-width="0.5"/>
+            <line x1="260" y1="90" x2="326" y2="102" stroke="#2A3A52" stroke-width="0.5"/>
+            <line x1="260" y1="90" x2="306" y2="127" stroke="#2A3A52" stroke-width="0.5"/>
+            <!-- Under review badge -->
+            <rect x="50" y="152" width="140" height="16" rx="4" fill="rgba(245,166,35,0.1)"/>
+            <text x="120" y="164" font-family="JetBrains Mono, monospace" font-size="8" fill="#F5A623" text-anchor="middle">UNDER REVIEW</text>
+          </svg>
+          <span class="project-cat research">Research</span>
+        </div>
+        <div class="project-body">
+          <div class="project-title">AI &amp; Sustainable Development Goals — Opinion Paper</div>
+          <p class="project-desc">Co-authored opinion paper with 21 international researchers on the role of artificial intelligence in advancing UN Sustainable Development Goals. Corresponding author: Dr. Abhishek Kaushik (DkIT, Ireland). Currently under review.</p>
+          <div class="project-highlights">
+            <span class="hl-chip">21 Co-authors</span>
+            <span class="hl-chip">AI for SDGs</span>
+            <span class="hl-chip">International Collaboration</span>
+            <span class="hl-chip gold-chip">Under Review</span>
+          </div>
+          <div class="project-meta">
+            <span>Multi-institutional · 2024–2025</span>
+            <span>Under Review</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /projects-grid -->
+  </div>
+</section>
+
+<!-- ====================================================== SELECTED PUBLICATIONS -->
+<section class="section" id="publications">
+  <div class="section-inner">
+    <div class="section-eyebrow">Publications</div>
+    <h2 class="section-title">20+ peer-reviewed publications<br/><em>SCI &amp; Scopus indexed</em></h2>
+    <p class="section-lead">Spanning emission control, occupational health, EV thermal systems, nano-materials, ML, and AI for sustainability.</p>
+
+    <div class="pub-list reveal">
+
+      <div class="pub-item gold-pub">
+        <div class="pub-type">📄 Under Review — Journal of Energy Storage</div>
+        <div class="pub-title">Graphene-Silver Hybrid Nanoparticles Embedded Phase Change Materials for Enhanced Thermal Management of Lithium-Ion Batteries</div>
+        <div class="pub-authors">Akshay B, Faisal Seyas, <strong>Vishnu BR</strong>, Manu Mohan</div>
+        <div class="pub-journal">Journal of Energy Storage</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-type">📄 Published · Sustainable Materials and Technologies, 2025</div>
+        <div class="pub-title">Development of low-emission next-generation stainless steel E304-16 and E316-16 synthetic electrodes with mild steel core wire</div>
+        <div class="pub-authors">Rahul M, Sivapirakasam SP, Mohan S, <strong>Vishnu BR</strong>, Prasanth C</div>
+        <div class="pub-journal">Sustainable Materials and Technologies 2025;44:e01372</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-type">📄 Published · Journal of Manufacturing Processes, 2018</div>
+        <div class="pub-title">Influence of nano-sized flux materials in reduction of Cr(VI) in SS welding fumes</div>
+        <div class="pub-authors"><strong>Vishnu BR</strong>, Sivapirakasam SP, Satpathy KK, Albert SK, Chakraborty G</div>
+        <div class="pub-journal">Journal of Manufacturing Processes 2018;34:713–20</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-type">📄 Published · Process Safety and Environmental Protection, 2018</div>
+        <div class="pub-title">Cr6+ reduction in welding fumes by nano composite coatings on SS MMAW electrodes</div>
+        <div class="pub-authors"><strong>Vishnu BR</strong>, Sivapirakasam SP, Satpathy KK, Albert SK, Chakraborty G</div>
+        <div class="pub-journal">Process Safety and Environmental Protection 2018;114:334–46</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-type">📄 Published · High Temperature Materials and Processes, 2020</div>
+        <div class="pub-title">Effect of substituting fine rutile with nano TiO2 on mass transfer efficiency and welding fume reduction in SS SMAW electrode</div>
+        <div class="pub-authors"><strong>Vishnu BR</strong>, Paramashivan SS, Mohan S, Albert SK</div>
+        <div class="pub-journal">High Temperature Materials and Processes 2020;39(1):117–23</div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-type">📄 Published · Experimental Thermal and Fluid Science, 2019</div>
+        <div class="pub-title">Pool boiling heat transfer enhancement using sol-gel derived nano-CuO porous coating</div>
+        <div class="pub-authors">Joseph A et al., <strong>Vishnu BR</strong></div>
+        <div class="pub-journal">Experimental Thermal and Fluid Science 2019;103:37–50</div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:28px; font-family:var(--font-mono); font-size:0.78rem; color:var(--muted);">
+      + 15 further publications across Welding in the World, Journal of Environmental Chemical Engineering, Materials Today, and conference proceedings.
+      <a href="mailto:vishnubr.nitt.me@gmail.com" style="color:var(--teal); text-decoration:none;"> Request full list →</a>
+    </p>
+  </div>
+</section>
+
+<!-- ====================================================== PATENTS -->
+<section class="section" id="patents">
+  <div class="section-inner">
+    <div class="section-eyebrow">Intellectual Property</div>
+    <h2 class="section-title">4 Granted Patents + 1 Published</h2>
+    <p class="section-lead">From welding emission control to EV thermal systems — innovations protected and peer-validated.</p>
+
+    <div class="patents-grid reveal">
+      <div class="patent-card">
+        <div class="patent-number">Indian Patent No. 201741039032</div>
+        <div class="patent-title">A Novel Flux Composition for Stainless Steel SMAW Electrodes</div>
+        <div class="patent-status granted">Granted</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-number">Indian Patent No. 201741042166</div>
+        <div class="patent-title">An Industrial Helmet for Welding Fume Expulsion</div>
+        <div class="patent-status granted">Granted</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-number">Indian Patent No. 202041025422</div>
+        <div class="patent-title">Thermal Spray Coating Attachment for Cylindrical Substrate</div>
+        <div class="patent-status granted">Granted</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-number">Indian Patent No. 202141005994</div>
+        <div class="patent-title">A Novel Flux Composition for SS SMAW Electrodes with Mild Steel Core Wire</div>
+        <div class="patent-status granted">Granted</div>
+      </div>
+      <div class="patent-card">
+        <div class="patent-number">Indian Patent No. 202441097925A</div>
+        <div class="patent-title">Thermoelectric Enhanced Liquid Dual Stage Cooling Solution for Swappable EV Battery Packs</div>
+        <div class="patent-status published">Published — Grant Awaiting</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="section-eyebrow">Career Timeline</div>
+    <h2 class="section-title">From atomic research to data analytics<br/>— a decade of impact</h2>
+
+    <div class="timeline reveal">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">JUNE 2025 – PRESENT</div>
+        <div class="tl-org">Starilum Ltd, Drogheda, Ireland</div>
+        <div class="tl-role">Data Analyst</div>
+        <ul class="tl-points">
+          <li>Maintain and validate complex datasets using SQL and Excel; develop Power BI dashboards integrating multiple data sources for cross-functional reporting.</li>
+          <li>Generate regular and ad-hoc reports for stakeholders with documented transformation steps and analytical narrative.</li>
+          <li>Achieved 80% increase in organisational research capabilities within 5 months through enhanced reporting infrastructure.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">SEPT 2024 – AUG 2025</div>
+        <div class="tl-org">Dundalk Institute of Technology, Ireland</div>
+        <div class="tl-role">MSc Scholar — Data Analytics (President's Gold Medal)</div>
+        <ul class="tl-points">
+          <li>Graduated First Class Honours with President's Gold Medal — top student in cohort.</li>
+          <li>Projects spanning ML pipelines (2.3M rows), Power BI dashboards, time series analysis (1M+ synthetic data), graph databases, and global data integration.</li>
+          <li>Modules included: Data Governance, GDPR &amp; Data Protection, Machine Learning, Statistical Analysis, Data Visualisation.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">SEPT 2019 – AUG 2024</div>
+        <div class="tl-org">Marian Engineering College, Kerala, India</div>
+        <div class="tl-role">Associate Professor, Research Lead &amp; Principal Investigator</div>
+        <ul class="tl-points">
+          <li>Principal Investigator on 2 government-funded projects totalling INR 40 Lakhs: scoped, coordinated, budgeted, and delivered structured progress reports to funding bodies.</li>
+          <li>Founded Energy Research Lab and Rapid Prototyping Lab (3D printing, CNC, laser); managed capital equipment and lab governance.</li>
+          <li>Led 30+ member interdisciplinary team on Electric Go-Kart project to national-level recognition.</li>
+          <li>Produced 20+ peer-reviewed publications and secured 5 Indian patents during this period.</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">MAY 2014 – JAN 2019</div>
+        <div class="tl-org">IGCAR, Dept. of Atomic Energy, Govt. of India</div>
+        <div class="tl-role">Senior Research Fellow — Environmental Safety &amp; Occupational Health</div>
+        <ul class="tl-points">
+          <li>Designed and executed DoE-based experimental programmes for welding fume characterisation and emission control to ISO 15011-1:2009 and AWS F1.2 standards.</li>
+          <li>Achieved 70% reduction in carcinogenic Cr(VI) through nano-composite flux development — validated independently, resulting in 2 granted patents.</li>
+          <li>Delivered two invited lectures at IIW General Assemblies (50+ countries) on welding emission control and green manufacturing.</li>
+          <li>Produced compliance and technical reports for government and international safety oversight panels (NIOSH, AWS, DAE).</li>
+        </ul>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-date">2010–2011 &amp; 2013–2014</div>
+        <div class="tl-org">St. Thomas Institute for Science &amp; Technology, Kerala</div>
+        <div class="tl-role">Lecturer / Assistant Professor</div>
+        <ul class="tl-points">
+          <li>Delivered undergraduate Mechanical Engineering courses; coordinated student placements and skill-based training programmes.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Education strip -->
+    <div style="margin-top:60px;">
+      <div class="section-eyebrow" style="margin-bottom:20px;">Education</div>
+      <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap:16px;">
+        <div class="pillar">
+          <span class="pillar-icon">🎓</span>
+          <h4>MSc Data Analytics</h4>
+          <p>Dundalk IT, Ireland · 2024–2025<br/>First Class Honours · <strong style="color:var(--gold)">President's Gold Medal</strong></p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">🔬</span>
+          <h4>PhD Mechanical Engineering</h4>
+          <p>NIT Tiruchirappalli, India · 2014–2020<br/>Env. Safety &amp; Occupational Health · DAE-IGCAR Fellow</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">♨️</span>
+          <h4>M.Tech Thermal Science</h4>
+          <p>University of Kerala · 2011–2013<br/>First Class</p>
+        </div>
+        <div class="pillar">
+          <span class="pillar-icon">⚙️</span>
+          <h4>B.Tech Mechanical Engineering</h4>
+          <p>University of Kerala · 2005–2009<br/>First Class</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== AWARDS -->
+<section class="section" id="awards">
+  <div class="section-inner">
+    <div class="section-eyebrow">Recognition</div>
+    <h2 class="section-title">Awards, fellowships &amp;<br/>international recognition</h2>
+
+    <div class="awards-grid reveal">
+      <div class="award-card">
+        <div class="award-icon">🏅</div>
+        <div class="award-body">
+          <h4>President's Gold Medal</h4>
+          <p>First Class Honours, MSc Data Analytics — Dundalk Institute of Technology, Ireland (2025). Top student in cohort.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🏆</div>
+        <div class="award-body">
+          <h4>Best Paper Award</h4>
+          <p>Dual Stage Thermoelectric Cooling Method for EV Batteries — ICNN 2023, VNIT Nagpur, India.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🔬</div>
+        <div class="award-body">
+          <h4>DAE-IGCAR Senior Research Fellowship</h4>
+          <p>Competitive government fellowship from India's Department of Atomic Energy — one of the most prestigious research awards in Indian engineering science.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🌍</div>
+        <div class="award-body">
+          <h4>IIW International Speaker</h4>
+          <p>Delivered 2 invited lectures at IIW General Assemblies (2021) representing 50+ countries on welding emission control and green manufacturing.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">🏎️</div>
+        <div class="award-body">
+          <h4>National Award — Electric Go-Kart</h4>
+          <p>Team innovation project recognised at national competition level in India.</p>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-icon">⚡</div>
+        <div class="award-body">
+          <h4>5 Indian Patents</h4>
+          <p>4 granted patents + 1 published (grant awaiting) across welding flux, EV battery cooling, safety devices, and thermal spray systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== CONTACT -->
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="section-eyebrow">Get In Touch</div>
+    <h2 class="section-title">Open to roles in Ireland</h2>
+    <p class="section-lead">Available immediately for data analytics, mechanical engineering, automotive testing, R&D, and research positions across Ireland.</p>
+
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>Let's connect</h3>
+        <p>I bring a rare combination of PhD-level experimental engineering and postgraduate data science — ready to contribute from day one across technical and analytical roles.</p>
+        <div class="contact-links">
+          <a href="mailto:vishnubr.nitt.me@gmail.com" class="contact-link">
+            <div class="cl-icon">✉️</div>
+            <div class="cl-text"><strong>Email</strong>vishnubr.nitt.me@gmail.com</div>
+          </a>
+          <a href="tel:+353894083666" class="contact-link">
+            <div class="cl-icon">📞</div>
+            <div class="cl-text"><strong>Phone</strong>+353 89 408 3666</div>
+          </a>
+          <div class="contact-link" style="cursor:default;">
+            <div class="cl-icon">📍</div>
+            <div class="cl-text"><strong>Location</strong>Dundalk, Co. Louth, Ireland · Full Driving Licence</div>
+          </div>
+          <a href="https://linkedin.com/in/drvishnubr" target="_blank" class="contact-link">
+            <div class="cl-icon">🔗</div>
+            <div class="cl-text"><strong>LinkedIn</strong>linkedin.com/in/drvishnubr</div>
+          </a>
+        </div>
+      </div>
+
+      <div>
+        <div class="section-eyebrow" style="margin-bottom:16px;">Download CVs</div>
+        <div class="cv-download-grid">
+          <div class="cv-download-card">
+            <div class="cv-left">
+              <strong>Data Analyst CV</strong>
+              <span>Power BI · SQL · Python · Analytics</span>
+            </div>
+            <a href="Vishnu_PGIM_Resume.pdf" class="cv-dl-btn" download>↓ Download</a>
+          </div>
+          <div class="cv-download-card">
+            <div class="cv-left">
+              <strong>Mechanical CAD Technician CV</strong>
+              <span>SolidWorks · GD&T · BOM · DFM/DFA</span>
+            </div>
+            <a href="Vishnu_CV_Hanley.pdf" class="cv-dl-btn" download>↓ Download</a>
+          </div>
+          <div class="cv-download-card">
+            <div class="cv-left">
+              <strong>Senior Research Fellow CV</strong>
+              <span>Publications · Patents · Experimental R&D</span>
+            </div>
+            <a href="Vishnu_UCD_019732.pdf" class="cv-dl-btn" download>↓ Download</a>
+          </div>
+          <div class="cv-download-card">
+            <div class="cv-left">
+              <strong>Mechanical Project Engineer CV</strong>
+              <span>Project Delivery · H&S · Site Engineering</span>
+            </div>
+            <a href="Vishnu_MechEnngineer_.pdf" class="cv-dl-btn" download>↓ Download</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====================================================== FOOTER -->
+<footer>
+  <p>© 2026 Dr. Vishnu Bhuvanachandran · Dundalk, Ireland ·
+    <a href="mailto:vishnubr.nitt.me@gmail.com">vishnubr.nitt.me@gmail.com</a> ·
+    <a href="https://linkedin.com/in/drvishnubr" target="_blank">LinkedIn</a>
+  </p>
+  <p style="margin-top:8px; font-size:0.65rem; opacity:0.5;">Engineer · Researcher · Data Scientist</p>
+</footer>
+
+<script>
+  // ---- MOBILE NAV ----
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // ---- SKILLS TABS ----
+  function switchTab(id, btn) {
+    document.querySelectorAll('.skills-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  // ---- PROJECT FILTER ----
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // ---- SCROLL REVEAL ----
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Stagger children
+        entry.target.querySelectorAll('.project-card, .pillar, .skill-chip, .patent-card, .award-card, .pub-item').forEach((el, i) => {
+          el.style.transitionDelay = (i * 60) + 'ms';
+          el.classList.add('reveal', 'visible');
+        });
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ---- NAV ACTIVE STATE ----
+  const sections = document.querySelectorAll('section[id], div[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--teal)' : '';
+    });
+  });
+
+  // ---- CLOSE MENU ON LINK CLICK ----
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navLinks').classList.remove('open');
+    });
+  });
+</script>
+</body>
+</html>
