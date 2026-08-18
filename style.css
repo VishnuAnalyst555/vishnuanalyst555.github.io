@@ -1,0 +1,13 @@
+/*
+  Dr. Vishnu Bhuvanachandran — Portfolio
+  style.css
+
+  All core styles are embedded in index.html for maximum compatibility
+  and single-file deployment. This file exists to maintain repository
+  structure and can be used for future page-specific overrides.
+
+  To add styles for additional pages (about.html, projects.html etc.),
+  add them here and link this stylesheet in those pages.
+*/
+
+/* Future page overrides go here */
